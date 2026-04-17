@@ -19,50 +19,94 @@ public class Main {
         books[7] = new Book(8, "978-0000000008", "The Catcher in the Rye", false, "");
         books[8] = new Book(9, "978-0000000009", "The Lord of the Rings", false, "");
         books[9] = new Book(10, "978-0000000010", "The Alchemist", false, "");
-        String mainPrompt = """
-                        Main Menu
-                1. Show available books
-                2. Show checked out books
-                3. Exit the application
-                
-                Please enter your selection.        
-                
+
+        do {
+            String mainPrompt = """
+                            Main Menu
+                    1. Show available books
+                    2. Show checked out books
+                    3. Exit the application
+                    
+                    Please enter your selection.        
+                    
+                    """;
+            System.out.println(mainPrompt);
+            String userSelection = inputScanner.nextLine();
+
+            switch (userSelection) {
+                case "1":
+                    showAvailableMenu(books);
+                    break;
+                case "2":
+                    showCheckOutMenu(books);
+                    break;
+                case "3":
+
+                    break;
+                default:
+                    System.err.println("Invalid selection");
+
+
+            }
+
+        } while (true);
+
+
+    }
+
+    private static void showCheckOutMenu(Book[] books) {
+
+        System.out.println("These are the unavailable books");
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].isCheckedOut) {
+                System.out.print(books[i].tittle + " ");
+                System.out.print(books[i].id + " ");
+                System.out.println(books[i].isbn + " ");
+                System.out.println(books[i].checkedOutTo);
+            }
+        }
+        System.out.println("");
+        String prompt = """
+                1. Check in a book
+                2. Exit to main menu
+                Enter your selection                
                 """;
-        System.out.println(mainPrompt);
+        System.out.println(prompt);
         String userSelection = inputScanner.nextLine();
 
         switch (userSelection) {
             case "1":
-                showAvailableMenu(books);
+
+                System.out.println("Enter book number you want to check in");
+                userSelection = inputScanner.nextLine();
+                int id = Integer.parseInt(userSelection);
+
+
+                books[id].isCheckedOut = false;
+                books[id].checkedOutTo = "";
+
                 break;
             case "2":
-                showCheckOutMenu();
-                break;
-            case "3":
 
                 break;
+
             default:
                 System.err.println("Invalid selection");
-
-
         }
 
-
-    }
-
-    private static void showCheckOutMenu() {
 
     }
 
     private static void showAvailableMenu(Book[] books) {
-
+        System.out.println("These are the available books");
         for (int i = 0; i < books.length; i++) {
             if (books[i].isCheckedOut == false) {
-                System.out.println(books[i].tittle + " ");
+                System.out.print(books[i].tittle + " ");
                 System.out.print(books[i].id + " ");
-                System.out.print(books[i].isbn + " ");
+                System.out.println(books[i].isbn + " ");
             }
         }
+        System.out.println("");
         String prompt = """
                 1. Check out a book
                 2. Exit to main menu
