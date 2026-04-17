@@ -3,7 +3,7 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class Main {
-    Scanner inputScanner = new Scanner(System.in);
+     static Scanner inputScanner = new Scanner(System.in);
     public static void main(String[] args) {
 
         Book[] books = new Book[10];
@@ -18,6 +18,19 @@ public class Main {
         books[7] = new Book(8, "978-0000000008", "The Catcher in the Rye", false, "");
         books[8] = new Book(9, "978-0000000009", "The Lord of the Rings", false, "");
         books[9] = new Book(10, "978-0000000010", "The Alchemist", false, "");
+        String mainPrompt = """
+                        Main Menu
+                1. Show available books
+                2. Show checked out books
+                3. Exit the application
+                
+                Please enter your selection.        
+              
+                """;
+        System.out.println(mainPrompt);
+        String userSelection = inputScanner.nextLine();
+
+
 
     }
 
