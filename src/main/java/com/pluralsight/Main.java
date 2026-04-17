@@ -3,13 +3,14 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class Main {
-     static Scanner inputScanner = new Scanner(System.in);
+    static Scanner inputScanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         Book[] books = new Book[10];
 
         books[0] = new Book(1, "978-0000000001", "The Hobbit", false, "");
-        books[1] = new Book(2, "978-0000000002", "1984", false, "");
+        books[1] = new Book(2, "978-0000000002", "1984", true, "");
         books[2] = new Book(3, "978-0000000003", "To Kill a Mockingbird", false, "");
         books[3] = new Book(4, "978-0000000004", "The Great Gatsby", false, "");
         books[4] = new Book(5, "978-0000000005", "Moby Dick", false, "");
@@ -25,17 +26,70 @@ public class Main {
                 3. Exit the application
                 
                 Please enter your selection.        
-              
+                
                 """;
         System.out.println(mainPrompt);
         String userSelection = inputScanner.nextLine();
 
+        switch (userSelection) {
+            case "1":
+                showAvailableMenu(books);
+                break;
+            case "2":
+                showCheckOutMenu();
+                break;
+            case "3":
+
+                break;
+            default:
+                System.err.println("Invalid selection");
+
+
+        }
 
 
     }
 
+    private static void showCheckOutMenu() {
 
+    }
 
+    private static void showAvailableMenu(Book[] books) {
 
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].isCheckedOut == false) {
+                System.out.println(books[i].tittle + " ");
+                System.out.print(books[i].id + " ");
+                System.out.print(books[i].isbn + " ");
+            }
+        }
+        String prompt = """
+                1. Check out a book
+                2. Exit to main menu
+                Enter your selection                
+                """;
+        System.out.println(prompt);
+        String userSelection = inputScanner.nextLine();
 
+        switch (userSelection) {
+            case "1":
+
+                System.out.println("Enter book number you want to check out");
+                userSelection = inputScanner.nextLine();
+                int id = Integer.parseInt(userSelection);
+
+                System.out.println("Enter your name");
+                String name = inputScanner.nextLine();
+                books[id].isCheckedOut = true;
+                books[id].checkedOutTo = name;
+
+                break;
+            case "2":
+
+                break;
+
+            default:
+                System.err.println("Invalid selection");
+        }
+    }
 }
