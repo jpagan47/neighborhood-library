@@ -1,17 +1,28 @@
 package com.pluralsight;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class Main {
+    Scanner inputScanner = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        Book[] books = new Book[10];
+
+        books[0] = new Book(1, "978-0000000001", "The Hobbit", false, "");
+        books[1] = new Book(2, "978-0000000002", "1984", false, "");
+        books[2] = new Book(3, "978-0000000003", "To Kill a Mockingbird", false, "");
+        books[3] = new Book(4, "978-0000000004", "The Great Gatsby", false, "");
+        books[4] = new Book(5, "978-0000000005", "Moby Dick", false, "");
+        books[5] = new Book(6, "978-0000000006", "Pride and Prejudice", false, "");
+        books[6] = new Book(7, "978-0000000007", "Harry Potter", false, "");
+        books[7] = new Book(8, "978-0000000008", "The Catcher in the Rye", false, "");
+        books[8] = new Book(9, "978-0000000009", "The Lord of the Rings", false, "");
+        books[9] = new Book(10, "978-0000000010", "The Alchemist", false, "");
+
     }
+
+
+
+
+
 }
